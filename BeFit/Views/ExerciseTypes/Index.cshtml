@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ExerciseType>
+
+@{
+    ViewData["Title"] = "Lista ćwiczeń";
+}
+
+<h2>Lista ćwiczeń</h2>
+
+@if (User.IsInRole("Administrator"))
+{
+    <a asp-action="Create" class="btn btn-primary">Dodaj nowe ćwiczenie</a>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nazwa ćwiczenia</th>
+            @if (User.IsInRole("Administrator"))
+            {
+                <th>Akcje</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                @if (User.IsInRole("Administrator"))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

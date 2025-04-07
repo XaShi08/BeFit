@@ -1,0 +1,17 @@
+﻿@model WorkoutSession
+@{
+    ViewData["Title"] = "Usuń sesję";
+}
+
+<h2>Czy na pewno chcesz usunąć tę sesję?</h2>
+
+<div>
+    <p><strong>Data rozpoczęcia:</strong> @Model.StartTime.ToString("g")</p>
+    <p><strong>Data zakończenia:</strong> @Model.EndTime.ToString("g")</p>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Usuń</button>
+    <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+</form>

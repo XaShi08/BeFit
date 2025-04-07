@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WorkoutSession>
+@{
+    ViewData["Title"] = "Moje sesje treningowe";
+}
+
+<h2>Moje sesje treningowe</h2>
+
+<a asp-action="Create" class="btn btn-primary">Dodaj nową sesję</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Data rozpoczęcia</th>
+            <th>Data zakończenia</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var session in Model)
+        {
+            <tr>
+                <td>@session.StartTime.ToString("g")</td>
+                <td>@session.EndTime.ToString("g")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@session.Id">Edytuj</a> |
+                    <a asp-action="Delete" asp-route-id="@session.Id">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

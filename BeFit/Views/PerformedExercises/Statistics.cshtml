@@ -1,0 +1,31 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Statystyki";
+}
+
+<h2>Twoje statystyki z ostatnich 4 tygodni</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ćwiczenie</th>
+            <th>Ilość wykonań</th>
+            <th>Łącznie powtórzeń</th>
+            <th>Średnie obciążenie</th>
+            <th>Maksymalne obciążenie</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ExerciseName</td>
+                <td>@item.Count</td>
+                <td>@item.TotalReps</td>
+                <td>@item.AvgWeight.ToString("0.##") kg</td>
+                <td>@item.MaxWeight.ToString("0.##") kg</td>
+            </tr>
+        }
+    </tbody>
+</table>

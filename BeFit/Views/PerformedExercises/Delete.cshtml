@@ -1,0 +1,27 @@
+﻿@model PerformedExercise
+
+@{
+    ViewData["Title"] = "Usuń ćwiczenie";
+}
+
+<h2>Czy na pewno chcesz usunąć to ćwiczenie?</h2>
+
+<dl class="row">
+    <dt class="col-sm-4">Rodzaj ćwiczenia</dt>
+    <dd class="col-sm-8">@Model.ExerciseType?.Name</dd>
+
+    <dt class="col-sm-4">Obciążenie</dt>
+    <dd class="col-sm-8">@Model.Weight kg</dd>
+
+    <dt class="col-sm-4">Serie</dt>
+    <dd class="col-sm-8">@Model.Sets</dd>
+
+    <dt class="col-sm-4">Powtórzenia</dt>
+    <dd class="col-sm-8">@Model.Repetitions</dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Usuń</button>
+    <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+</form>
